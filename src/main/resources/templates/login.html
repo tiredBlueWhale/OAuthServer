@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <title>Pattern Atlas Login</title>
+</head>
+<body>
+<div class="login-page">
+    <div class="form">
+        <h1>Welcome to Pattern Atlas</h1>
+        <h4>Please enter your credentials</h4>
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <form th:action="@{/login}" method="post">
+            <input type="email" name="username" placeholder="Username"/>
+            <input type="password" name="password" placeholder="Password"/>
+            <!--             <input type="submit" value="Login"/>-->
+            <button type="submit">Login</button>
+            <p class="message">Not registered? <a href="signup">Create an account</a></p>
+        </form>
+<!--        <form class="register-form">-->
+<!--            <input type="text" placeholder="name"/>-->
+<!--            <input type="password" placeholder="password"/>-->
+<!--            <input type="text" placeholder="email address"/>-->
+<!--            <button>create</button>-->
+<!--            <p class="message">Already registered? <a href="#">Sign In</a></p>-->
+<!--        </form>-->
+    </div>
+</div>
+</body>
+</html>
