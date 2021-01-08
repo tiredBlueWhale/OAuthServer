@@ -1,0 +1,16 @@
+version: '3'
+services:
+  pattern-pedia-auth:
+    image: patternpedia/auth:latest
+    environment:
+      JDBC_DATABASE_URL: db
+      JDBC_DATABASE_USERNAME: postgres
+      JDBC_DATABASE_PASSWORD: postgres
+    ports:
+    - "8081:8081"
+    networks:
+    - default
+    restart: on-failure
+networks:
+  default:
+    driver: bridge

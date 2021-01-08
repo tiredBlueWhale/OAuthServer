@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: postgres:10
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+    - "5432:5432"
+    networks:
+    - default
+  pattern-pedia-auth:
+    image: patternpedia/auth:latest
+    environment:
+      JDBC_DATABASE_URL: db
+      JDBC_DATABASE_USERNAME: postgres
+      JDBC_DATABASE_PASSWORD: postgres
+    ports:
+    - "8081:8081"
+    networks:
+    - default
+    depends_on:
+    - db
+    restart: on-failure
+networks:
+  default:
+    driver: bridge
